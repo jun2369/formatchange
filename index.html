@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <title>在线数字转逗号分隔列表</title>
+  <style>
+    textarea { width: 300px; height: 200px; }
+    #result { margin-top: 10px; font-weight: bold; }
+  </style>
+</head>
+<body>
+  <h2>输入一列数字（每行一个）</h2>
+  <textarea id="inputNumbers" placeholder="例如:\n1111\n2222\n3333"></textarea><br>
+  <button onclick="convertToCommaSeparated()">转换</button>
+  <div id="result"></div>
+
+  <script>
+    function convertToCommaSeparated() {
+      const input = document.getElementById('inputNumbers').value.trim();
+      const lines = input.split('\n').filter(line => line.trim() !== '');
+      const numbers = lines.map(num => num.trim());
+      const result = `(${numbers.join(', ')})`;
+      document.getElementById('result').innerText = result;
+    }
+  </script>
+</body>
+</html>
